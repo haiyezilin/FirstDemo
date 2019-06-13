@@ -1,0 +1,21 @@
+Mysql 10.65.192.13 DB:portal_db
+
+SELECT * FROM dci_bo_user WHERE BO_USER='320024488'
+
+INSERT INTO dci_bo_user 
+VALUES 
+('320024488', 'ALL', 'ALL', 'ALL', NULL, 'Cancel', $(NOW), NULL, NULL)
+SELECT * FROM dci_portal_user WHERE PORTAL_USER='320024488'
+
+INSERT INTO dci_portal_user 
+VALUES
+('320024488', 'ALL', 'ALL', 'ALL', 0, 'Cancel',$(NOW), NULL, NULL)
+
+ECS 10.65.192.64 User:etl Password:Philips@2017
+cd /data/Project/01_DW/Scripts
+dmxjob /run J_OLE_I_DW_TR_PORTAL_USER_REGION_MAPPING.dxj
+
+
+周潇同步表：
+UM_EXT01.dm02_tr_portal_user_region_mapping
+UM_EXT01.dm02_tr_bo_user_mapping
